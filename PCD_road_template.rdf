@@ -1,0 +1,43 @@
+$---------------------------------------------------------------------MDI_HEADER
+[MDI_HEADER]
+FILE_TYPE  =  'rdf'
+FILE_VERSION  =  5.00
+FILE_FORMAT  =  'ASCII'
+(COMMENTS)
+{comment_string}
+'3D dummy test track'
+$--------------------------------------------------------------------------UNITS
+[UNITS]
+ LENGTH             = 'mm'
+ FORCE              = 'newton'
+ ANGLE              = 'radians'
+ MASS               = 'kg'
+ TIME               = 'sec'
+$--------------------------------------------------------------------------definition
+[MODEL]
+ METHOD             = '3D'
+ ROAD_TYPE		    = 'PCD'
+$--------------------------------------------------------------------------offset
+[PARAMETERS]
+ ROTATION_ANGLE_XY_PLANE =   0                  $ Option to rotate the road about road reference marker
+ MU                      = 1.0
+ OFFSET_X				 = 0.0                  $ Option to set the value by which road has to be moved along x axis
+ OFFSET_Y				 = 0.0                  $ Option to set the value by which road has to be moved along y axis
+ OFFSET_Z				 = 0.0                  $ Option to set the value by which road has to be moved along z axis
+ SEARCH_TRIAS            = True                 $ Option to switch search strategy between Elements and Nodes. Default-True: Elements will be searched, provided element table is available. 
+ HT_INTERPOLATION		 = 'BARYCENTRIC'        $ Option to set interpolation strategy to BARYCENTRIC / LINEAR
+                                                $ BARYCENTRIC :1. Weighted avg of height of nodes of enclosing triangle if SEARCH_TRIAS is True. 
+                                                $              2. Weighted avg of height of 3 number of points if SEARCH_TRIAS is False.
+                                                $ LINEAR      :1. Mean height of avg height of 3 nearest triangles if SEARCH_TRIAS is True
+                                                $               2. Mean height of nearest 3 points if SEARCH_TRIAS is False.
+ BEYOND_BB_Z		     = 0.0                  $ Option to set the road height when tires go off road
+$--------------------------------------------------------------------------Points
+[ROAD]
+ NUMBER_OF_NODES		= 135
+ NUMBER_OF_ELEMENTS    = 210
+$---------------------------------------------------------------------nodes
+[NODES]
+{node    x_value      y_value      z_value}
+$-------------------------------------------------------------------elements
+[ELEMENTS]
+{node_1 node_2 node_3 mu}
